@@ -5,23 +5,34 @@ export default function FormInput() {
       return (
             <Form>
                   <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
-                  <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                  </Form.Text>
+                        <Form.Label>Location Park</Form.Label>
+                        <Form.Control type="text" placeholder="Type here ..." />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                        <Form.Label>What time the duck are fed ?</Form.Label>
+                        <Form.Control type="text" placeholder="Type here ..." />
                   </Form.Group>
-                  <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Check me out" />
+
+                  <Form.Group controlId="formBasicPassword">
+                        <Form.Label>How many ducks are fed ?</Form.Label>
+                        <Form.Control type="text" placeholder="Type here ..." />
                   </Form.Group>
-                  <Button variant="primary" type="submit">
-                  Submit
+
+                  <Form.Group controlId="formBasicPassword">
+                        <Form.Label>What food the duck are fed ?</Form.Label>
+                        <Form.Control type="text" placeholder="Type here ..." />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicPassword">
+                        <Form.Label>How many food the duck are fed ?</Form.Label>
+                        <Form.Control type="text" placeholder="Type here ..." />
+                  </Form.Group>
+
+                  <Button variant="success" type="submit">
+                        Submit
                   </Button>
+
             </Form>
       )
 }
