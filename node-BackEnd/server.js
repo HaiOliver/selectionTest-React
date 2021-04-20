@@ -27,7 +27,8 @@ app.get("/allParks", (req, res) => {
 
 // post request create new park
 app.post("/addNewPark",(req,res)=>{
-  console.log("🚀 ~ file: server.js ~ line 30 ~ app.post ~ req", req.body)
+  console.log("===============================================================")
+  console.log("🚀 ~ file: server.js ~ line 30 ~ app.post ~ time fed", req.body.time_fed)
 
 
   // Validate request

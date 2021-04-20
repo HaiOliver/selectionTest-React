@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import DateTimePicker from 'react-datetime-picker';
 export default function FormInput() {
 
-      const [time, onChangeTime] = useState(new Date());
+      const [time_fed, onChangeTime] = useState(new Date());
       const [ location, setLocation] = useState("")
 
       const [ numberDucks, setNumberDucks] = useState("")
@@ -37,21 +37,49 @@ export default function FormInput() {
             setNumberFoods(value)
       }
 
+      const formatDate = (time) => {
+            let date_ob = time;
+
+            // adjust 0 before single digit date
+            let date = ("0" + date_ob.getDate()).slice(-2);
+
+            // current month
+            let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+            // current year
+            let year = date_ob.getFullYear();
+
+            // current hours
+            let hours = date_ob.getHours();
+
+            // current minutes
+            let minutes = date_ob.getMinutes();
+
+            // current seconds
+            let seconds = date_ob.getSeconds();
+
+            return (year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds)
+
+      }
+
       // ! Handle Submit
       const handleSubmit = (e) => {
             e.preventDefault()
-            if(location === "" || foods === "" || numberDucks === "" || numberFoods === "" || time === "" ){
+            if(location === "" || foods === "" || numberDucks === "" || numberFoods === ""  ){
                   alert("There is empty field. Please enter data !!")
                   return
             }
+
+
             const data = {
+
                   location,
                   number_of_duck: numberDucks,
                   number_of_food : numberFoods,
-                  time_fed:time,
+                  time_fed: formatDate(time_fed),
                   food:foods
                     };
-
+            console.log("🚀 ~ file: inputForm.jsx ~ line 48 ~ handleSubmit ~ data", data.time_fed)
 
             axios.post("/addNewPark",data)
                   .then((response) => {
@@ -66,7 +94,7 @@ export default function FormInput() {
             // ? do post request here
       }
 
-      console.log("time will be: ", time);
+
 
       return (
             <Form onSubmit={handleSubmit}>
@@ -97,10 +125,10 @@ export default function FormInput() {
 
                         </Form.Label>
 
-                        <div className="text-left" style={{width: "100%"}}>
+                        <div className="text-left" >
                               <DateTimePicker
                               onChange={onChangeTime}
-                              value={time}
+                              value={time_fed}
 
                               />
                         </div>
