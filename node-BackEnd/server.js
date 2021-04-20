@@ -94,18 +94,21 @@ app.put("/park/:id",(req, res) => {
 
 // delete Park by ID
 app.delete("/park/:id",(req, res) => {
+  console.log("🚀 ~ file: server.js ~ line 97 ~ app.delete ~ req", req)
+
   ParkFedDuck.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Van Restaurant with id ${req.params.id}.`
+          message: `Not found Van Restaurant with id ${req.params.id}.`,
+          success:false
         });
       } else {
         res.status(500).send({
           message: "Could not delete Van Restaurant with id " + req.params.id
         });
       }
-    } else res.send({ message: `Park was deleted successfully!` });
+    } else res.send({ message: `Park was deleted successfully!` , success: true });
   });
 })
 

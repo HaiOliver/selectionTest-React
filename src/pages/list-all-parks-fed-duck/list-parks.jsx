@@ -7,7 +7,7 @@ import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
-export default function ListParks() {
+function ListParks() {
       const [ parks, setParks] = useState([]);
 
       const [loading, setLoading] = useState(true)
@@ -20,46 +20,14 @@ export default function ListParks() {
                   setParks(result.data)
                   setLoading(false)
             }
-
             fetch_data_from_DB();
-
       },[])
 
-      // ! split array parks into chunk of 4
-      const chunk = (arr, size) => arr.reduce((acc, e, i) => (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc), []);
-
-      const arrangedArray = chunk(parks,4)
-
-
       // ! render park in browser
-      // const renderParks = arrangedArray.map((eachRow,indx) => {
-      //       console.log("🚀 ~ file: list-parks.jsx ~ line 34 ~ renderParks ~ eachRow", eachRow)
 
-      //       let renderEachParks = eachRow.map((eachPark,index) => {
-      //                               <Col key = {index}>
-      //                                     <Park
-      //                                           location = {eachPark.location}
-      //                                           numberDucks = {eachPark.number_of_duck}
-      //                                           time={eachPark.time_fed}
-      //                                           numberFoods = {eachPark.number_of_food}
-      //                                           food = {eachPark.food}
-
-      //                                     />
-      //                               </Col>
-      //                         })
-      //       return(
-      //             <Row key = {indx}>
-      //                   <h1>Inside row </h1>
-      //                   {
-      //                        renderEachParks
-      //                   }
-      //             </Row>
-      //             )
-
-      // })
       console.log(parks);
-      const renderParks = parks.map((eachPark,indx) => {
-            return(
+      const renderParks = parks.map((eachPark,indx) =>
+
                         <Col key = {indx} className="p-3">
                                           <Park
                                                 location = {eachPark.location}
@@ -67,16 +35,18 @@ export default function ListParks() {
                                                 time={eachPark.time_fed}
                                                 numberFoods = {eachPark.number_of_food}
                                                 food = {eachPark.food}
+                                                id = {eachPark.id}
+
                                           />
                         </Col>
-                  )
 
-      })
+
+      )
 
 
 
       return (
-            <Container >
+            <Container fluid >
                   <Row className="d-flex justify-content-center">
                               <h1>
                                All parks that fed ducks list below
@@ -106,28 +76,10 @@ export default function ListParks() {
 
                         )
                         : (
-                              // <Row>
-                              //       <Col  xs={12} md={3}>
-                              //             <Park/>
-                              //       </Col>
-                              //       <Col xs={12} md={3}>
-                              //             <Park/>
-                              //       </Col>
-                              //       <Col xs={12} md={3}>
-                              //             <Park/>
-                              //       </Col>
 
-                              //       <Col xs={12} md={3}>
-                              //             <Park/>
-                              //       </Col>
-
-                              // </Row>
-                              <Row className = "d-flex flex-row justify-content-around">
+                              <Container className = "d-flex flex-wrap align-items-lg-start align-content-center ">
                                      {renderParks}
-                              </Row>
-
-
-
+                              </Container>
 
                         )}
                   </Row>
@@ -138,3 +90,6 @@ export default function ListParks() {
             </Container>
       )
 }
+
+
+export default React.memo(ListParks);
