@@ -10,7 +10,7 @@ export default function Park(props) {
       return (
             <Container>
                   <Row>
-                        <Card border="dark" style={{ width: '21rem' }}>
+                        <Card border="info" style={{ width: '21rem' }} bg={"Light".toLowerCase()}>
                               <Card.Header>
                                     <h2>
                                           Location: {location}

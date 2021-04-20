@@ -4,8 +4,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 export default function fedDuck() {
       return (
-            <Container>
-                  <Row>
+            <Container >
+                  <Row className="d-flex justify-content-center">
+                        <h1> Input your data about your duck fed activity </h1>
+                  </Row>
+                  <Row className="d-flex justify-content-center">
+
                         <FormInput/>
                   </Row>
             </Container>

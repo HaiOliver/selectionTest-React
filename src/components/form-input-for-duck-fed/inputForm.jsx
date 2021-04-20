@@ -2,11 +2,12 @@ import React,{useState} from 'react';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import DateTimePicker from 'react-datetime-picker';
 export default function FormInput() {
 
-
+      const [time, onChangeTime] = useState(new Date());
       const [ location, setLocation] = useState("")
-      const [ time, setTime] = useState("")
+
       const [ numberDucks, setNumberDucks] = useState("")
       const [ numberFoods, setNumberFoods] = useState("")
       const [ foods, setFoods] = useState("")
@@ -15,10 +16,6 @@ export default function FormInput() {
       // ! Set field
       const handleLocation = (value) => {
             setLocation(value)
-      }
-
-      const handleTime = (value) => {
-            setTime(value)
       }
 
       const handleFoods = (value) => {
@@ -48,11 +45,10 @@ export default function FormInput() {
                   return
             }
             const data = {
-
                   location,
                   number_of_duck: numberDucks,
                   number_of_food : numberFoods,
-                   time_fed:time,
+                  time_fed:time,
                   food:foods
                     };
 
@@ -67,60 +63,92 @@ export default function FormInput() {
                               alert('Sorry, park cannot be added. Network error.');
                                     })
 
-
-
-
-
-
-
-
-
-
             // ? do post request here
       }
+
+      console.log("time will be: ", time);
 
       return (
             <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicLocation">
-                        <Form.Label>Location Park</Form.Label>
-                        <Form.Control
+                        <Form.Label className="text-left" style={{width: "100%"}}>
+                              <h3>
+                                    Location Park
+                              </h3>
+
+                        </Form.Label>
+
+                              <Form.Control
                               type="text"
                               placeholder="Type here ..."
+                              size="lg"
                               onChange={ e => handleLocation(e.target.value)}
                                />
+
+
                   </Form.Group>
 
                   <Form.Group controlId="formBasicTime">
-                        <Form.Label>What time the duck are fed ?</Form.Label>
-                        <Form.Control
-                              type="text"
-                              placeholder="Type here ..."
-                              onChange={ e => handleTime(e.target.value)}
-                               />
+                        <Form.Label className="text-left" style={{width: "100%"}}>
+                              <h3>
+                                    What time the duck are fed ?
+                              </h3>
+
+
+                        </Form.Label>
+
+                        <div className="text-left" style={{width: "100%"}}>
+                              <DateTimePicker
+                              onChange={onChangeTime}
+                              value={time}
+
+                              />
+                        </div>
+
+
                   </Form.Group>
 
                   <Form.Group controlId="formBasicDucks">
-                        <Form.Label>How many ducks are fed ?</Form.Label>
+                        <Form.Label className="text-left" style={{width: "100%"}}>
+                              <h3>
+                                    How many ducks are fed ?
+                              </h3>
+
+                        </Form.Label>
                         <Form.Control
                               type="text"
+                              size="lg"
                               placeholder="Type here ..."
                               onChange={ e =>  handleNumberDucks(e.target.value)}
                               />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicFoods">
-                        <Form.Label>What food the duck are fed ?</Form.Label>
+                        <Form.Label className="text-left" style={{width: "100%"}}>
+                              <h3>
+                                    What food the duck are fed ?
+                              </h3>
+
+                        </Form.Label>
                         <Form.Control
                               type="text"
+                              size="lg"
                               placeholder="Type here ..."
                               onChange={ e => handleFoods(e.target.value)}
                               />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicNumberFoods">
-                        <Form.Label>How many food the duck are fed ?</Form.Label>
+                        <Form.Label className="text-left" style={{width: "100%"}}>
+                              <h3>
+                                       How many food the duck are fed ?
+                              </h3>
+
+
+                        </Form.Label>
                         <Form.Control
                               type="text"
+                              size="lg"
                               placeholder="Type here ..."
                               onChange={ e => handleNumberFoods(e.target.value)}
                               />

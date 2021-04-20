@@ -5,6 +5,8 @@ import Park from '../../components/park/park';
 import Col from 'react-bootstrap/Col';
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner';
+import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 export default function ListParks() {
       const [ parks, setParks] = useState([]);
 
@@ -30,36 +32,61 @@ export default function ListParks() {
 
 
       // ! render park in browser
-      const renderParks = arrangedArray.map((eachRow,indx) => {
+      // const renderParks = arrangedArray.map((eachRow,indx) => {
+      //       console.log("🚀 ~ file: list-parks.jsx ~ line 34 ~ renderParks ~ eachRow", eachRow)
+
+      //       let renderEachParks = eachRow.map((eachPark,index) => {
+      //                               <Col key = {index}>
+      //                                     <Park
+      //                                           location = {eachPark.location}
+      //                                           numberDucks = {eachPark.number_of_duck}
+      //                                           time={eachPark.time_fed}
+      //                                           numberFoods = {eachPark.number_of_food}
+      //                                           food = {eachPark.food}
+
+      //                                     />
+      //                               </Col>
+      //                         })
+      //       return(
+      //             <Row key = {indx}>
+      //                   <h1>Inside row </h1>
+      //                   {
+      //                        renderEachParks
+      //                   }
+      //             </Row>
+      //             )
+
+      // })
+      console.log(parks);
+      const renderParks = parks.map((eachPark,indx) => {
             return(
-                  <Row key = {indx}>
-                        {
-                              eachRow.map((eachPark,index) => {
-                                    <Col key = {index}>
+                        <Col key = {indx} className="p-3">
                                           <Park
                                                 location = {eachPark.location}
                                                 numberDucks = {eachPark.number_of_duck}
                                                 time={eachPark.time_fed}
                                                 numberFoods = {eachPark.number_of_food}
                                                 food = {eachPark.food}
-
                                           />
-                                    </Col>
-                              })
-                        }
-                  </Row>
+                        </Col>
                   )
 
       })
-      console.log("🚀 ~ file: list-parks.jsx ~ line 55 ~ renderParks ~ renderParks", renderParks)
+
 
 
       return (
             <Container >
-                  <Row>
+                  <Row className="d-flex justify-content-center">
                               <h1>
                                All parks that fed ducks list below
                               </h1>
+
+                  </Row>
+                  <Row className="d-flex justify-content-center">
+                        <Link to="/infoDuckFed" style={{textDecoration: "none"}}>
+                              <Button variant="info">Add new Park</Button>
+                        </Link>
                   </Row>
                   <Row>
 
@@ -95,12 +122,17 @@ export default function ListParks() {
                               //       </Col>
 
                               // </Row>
+                              <Row className = "d-flex flex-row justify-content-around">
+                                     {renderParks}
+                              </Row>
 
-                              {renderParks}
+
 
 
                         )}
                   </Row>
+
+
 
 
             </Container>
