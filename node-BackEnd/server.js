@@ -18,7 +18,7 @@ app.get("/allParks", (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving users"
+          err.message || "Some error occurred while retrieving Park"
       });
     else res.send(data);
   });
@@ -47,7 +47,7 @@ app.post("/addNewPark",(req,res)=>{
        time_fed:req.body.time_fed
      });
 
-     // Save Customer in the database -> call User.create() in user.js
+     // Save Park in the database
      ParkFedDuck.create(newPark, (err, data) => {
        if (err)
          res.status(500).send({
