@@ -10,9 +10,9 @@ const ParkFedDuck = function(parkFedDuck) {
 };
 
 
-// create new BurnabyRestaurants
+// create new Park
 ParkFedDuck.create = (newPark, result) => {
-console.log("🚀 ~ file: park-fed-duck.js ~ line 15 ~ newPark", newPark)
+  console.log("🚀 ~ file: park-fed-duck.js ~ line 15 ~ newPark", newPark)
 
   sql.query("INSERT INTO duckInfo SET ?", newPark, (err, res) => {
     if (err) {
@@ -20,13 +20,13 @@ console.log("🚀 ~ file: park-fed-duck.js ~ line 15 ~ newPark", newPark)
       result(err, null);
       return;
     }
-    console.log("Line 18, BurnabyRestaurant.js, created BurnabyRestaurant in Db: ", { id: res.insertId, ...newBurnabyRestaurant });
+    console.log("Line 23, created new Park in Db: ", { id: res.insertId, ...newPark});
     result(null, { id: res.insertId, ...newPark });
   });
 };
 
 
-// get all BurnabyRestaurants
+// get all Parks
 ParkFedDuck.getAll = result => {
   sql.query("SELECT * FROM duckInfo", (err, res) => {
     if (err) {
@@ -41,11 +41,11 @@ ParkFedDuck.getAll = result => {
 };
 
 
-// update BurnabyRestaurant by ID
+// update Park by ID
 ParkFedDuck.updateById = (id, park, result) => {
 
   sql.query(
-    "UPDATE BurnabyRestaurant SET location = ?, number_of_duck = ?, number_of_food = ?, food = ?, time_fed = ? WHERE id = ?",
+    "UPDATE duckInfo SET location = ?, number_of_duck = ?, number_of_food = ?, food = ?, time_fed = ? WHERE id = ?",
     [park.location, park.number_of_duck, park.number_of_food,
     park.food,park.time_fed, id],
     (err, res) => {
@@ -55,8 +55,8 @@ ParkFedDuck.updateById = (id, park, result) => {
         result(null, err);
         return;
       }
-      if (res.affectedRows == 0) {
-        // not found BurnabyRestaurant with the id
+      if (res.affectedRows === 0) {
+        // not found Park with the id
         result({ kind: "not_found" }, null);
         return;
       }
@@ -66,7 +66,7 @@ ParkFedDuck.updateById = (id, park, result) => {
   );
 };
 
-// delete BurnabyRestaurant
+// delete Park
 ParkFedDuck.remove = (id, result) => {
   sql.query("DELETE FROM duckInfo WHERE id = ?", id, (err, res) => {
     if (err) {
@@ -76,7 +76,7 @@ ParkFedDuck.remove = (id, result) => {
     }
 
     if (res.affectedRows === 0) {
-      // not found BurnabyRestaurant with the id
+      // not found Park with the id
       result({ kind: "not_found" }, null);
       return;
     }

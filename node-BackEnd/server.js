@@ -27,21 +27,24 @@ app.get("/allParks", (req, res) => {
 
 // post request create new park
 app.post("/addNewPark",(req,res)=>{
+  console.log("🚀 ~ file: server.js ~ line 30 ~ app.post ~ req", req.body)
+
+
   // Validate request
   if (!req.body) {
        res.status(400).send({
          message: "Content can not be empty!"
        });
      }
-   console.log("====================== body post from user request: ", req.body)
+
 
      // Create a Customer
      const newPark = new ParkFedDuck({
-       name: req.body.location,
-       address: req.body.number_of_duck,
-       postal_code: req.body.number_of_food,
-       status:req.body.food,
-       cuisine:req.body.time_fed
+       location: req.body.location,
+       number_of_duck: req.body.number_of_duck,
+       number_of_food: req.body.number_of_food,
+       food:req.body.food,
+       time_fed:req.body.time_fed
      });
 
      // Save Customer in the database -> call User.create() in user.js
@@ -89,7 +92,7 @@ app.put("/park/:id",(req, res) => {
 
 
 // delete Park by ID
-app.delete("/v1/vancouverRestaurant/:id",(req, res) => {
+app.delete("/park/:id",(req, res) => {
   ParkFedDuck.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
