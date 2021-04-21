@@ -46,7 +46,7 @@ function ListParks() {
 
                   </Row>
                   <Row className="d-flex justify-content-center">
-                        <Link to="/infoDuckFed" style={{textDecoration: "none"}}>
+                        <Link to="/selectionTest-React/infoDuckFed" style={{textDecoration: "none"}}>
                               <button className="add-new-park">Add new data</button>
                         </Link>
                   </Row>
@@ -55,7 +55,7 @@ function ListParks() {
                         <Container className = "d-flex flex-wrap align-items-lg-start align-content-center ">
                                     {renderParks}
                         </Container>
-                        
+
                   </Row>
 
 
