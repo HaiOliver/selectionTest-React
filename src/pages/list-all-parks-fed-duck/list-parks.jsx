@@ -11,7 +11,7 @@ function ListParks() {
       const [ parks, setParks] = useState([]);
       useEffect(() => {
             const fetch_data_from_DB = async ()=>{
-            let result = await axios.get('/allParks');
+            let result = await axios.get('https://react-selection-test.herokuapp.com/allParks');
 
                   // ! set state for array Parks
                   setParks(result.data)
@@ -46,7 +46,7 @@ function ListParks() {
 
                   </Row>
                   <Row className="d-flex justify-content-center">
-                        <Link to="/infoDuckFed" style={{textDecoration: "none"}}>
+                        <Link to="/selectionTest-React/infoDuckFed" style={{textDecoration: "none"}}>
                               <button className="add-new-park">Add new data</button>
                         </Link>
                   </Row>
