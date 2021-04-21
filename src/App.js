@@ -21,8 +21,8 @@ function App() {
                     <Loading/>
 
               }>
-                  <Route exact path="/" component={ListParks}/>
-                  <Route exact path="/infoDuckFed" component={FedDuck}/>
+                  <Route exact path="/selectionTest-React/" component={ListParks}/>
+                  <Route exact path="/selectionTest-React/infoDuckFed" component={FedDuck}/>
               </Suspense>
 
         </ErrorBoundary>
