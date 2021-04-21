@@ -46,7 +46,7 @@ function ListParks() {
 
                   </Row>
                   <Row className="d-flex justify-content-center">
-                        <Link to="/selectionTest-React/infoDuckFed" style={{textDecoration: "none"}}>
+                        <Link to="/infoDuckFed" style={{textDecoration: "none"}}>
                               <button className="add-new-park">Add new data</button>
                         </Link>
                   </Row>

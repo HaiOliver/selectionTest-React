@@ -15,7 +15,7 @@ export default function fedDuck() {
                         <FormInput/>
                   </Row>
                   <Row className="d-flex justify-content-center m-3">
-                        <Link to="/selectionTest-React" style={{textDecoration: "none"}}>
+                        <Link to="/" style={{textDecoration: "none"}}>
                               <Button variant="info">See all locations</Button>
                         </Link>
                   </Row>
