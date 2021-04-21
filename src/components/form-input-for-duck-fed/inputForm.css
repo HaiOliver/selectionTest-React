@@ -1,0 +1,74 @@
+.where{
+      font-weight: 500;
+      font-size: 40px;
+      color:#138496;
+}
+
+.time_fed{
+      font-weight: 500;
+      font-size: 40px;
+      color:#138496;
+
+}
+
+.numberDucksFed{
+      font-weight: 500;
+      font-size: 40px;
+      color:#138496;
+}
+
+.foodFedDuck{
+      font-weight: 500;
+      font-size: 40px;
+      color:#138496;
+
+}
+
+.howManyfood{
+      font-weight: 500;
+      font-size: 40px;
+      color:#138496;
+
+}
+
+@media only screen and (max-width: 600px) {
+
+            .where{
+            margin-left: 10px;
+            font-weight: 500;
+            font-size: 17px;
+            color:#138496;
+      }
+
+      .time_fed{
+            margin-left: 10px;
+            font-weight: 500;
+            font-size: 17px;
+            color:#138496;
+
+      }
+
+      .numberDucksFed{
+            margin-left: 10px;
+            font-weight: 500;
+            font-size: 17px;
+            color:#138496;
+      }
+
+      .foodFedDuck{
+            margin-left: 10px;
+            font-weight: 500;
+            font-size: 17px;
+            color:#138496;
+
+      }
+
+      .howManyfood{
+            margin-left: 10px;
+            font-weight: 500;
+            font-size: 17px;
+            color:#138496;
+
+      }
+
+}

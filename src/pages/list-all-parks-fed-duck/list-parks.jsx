@@ -4,21 +4,19 @@ import Row from 'react-bootstrap/Row';
 import Park from '../../components/park/park';
 import Col from 'react-bootstrap/Col';
 import axios from "axios";
-import Spinner from 'react-bootstrap/Spinner';
-import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
+import './list-parks.css';
+
 function ListParks() {
       const [ parks, setParks] = useState([]);
-
-      const [loading, setLoading] = useState(true)
-
       useEffect(() => {
+            console.log("useEffect render !!!!")
             const fetch_data_from_DB = async ()=>{
             let result = await axios.get('/allParks');
 
                   // ! set state for array Parks
                   setParks(result.data)
-                  setLoading(false)
+
             }
             fetch_data_from_DB();
       },[])
@@ -27,7 +25,6 @@ function ListParks() {
 
       console.log(parks);
       const renderParks = parks.map((eachPark,indx) =>
-
                         <Col key = {indx} className="p-3">
                                           <Park
                                                 location = {eachPark.location}
@@ -36,11 +33,8 @@ function ListParks() {
                                                 numberFoods = {eachPark.number_of_food}
                                                 food = {eachPark.food}
                                                 id = {eachPark.id}
-
                                           />
                         </Col>
-
-
       )
 
 
@@ -48,40 +42,27 @@ function ListParks() {
       return (
             <Container fluid >
                   <Row className="d-flex justify-content-center">
-                              <h1>
-                               All parks that fed ducks list below
+                              <h1 className = "big-header">
+                                    All locations for ducks-fed list below
                               </h1>
 
                   </Row>
                   <Row className="d-flex justify-content-center">
                         <Link to="/infoDuckFed" style={{textDecoration: "none"}}>
-                              <Button variant="info">Add new Park</Button>
+                              <button className="add-new-park">Add new data</button>
                         </Link>
                   </Row>
                   <Row>
 
-                        {loading
-                        ? (
-                              <Container>
-                                    <h3>Please wait .. !</h3>
-                                    <Spinner animation="grow" variant="primary" />
-                                    <Spinner animation="grow" variant="secondary" />
-                                    <Spinner animation="grow" variant="success" />
-                                    <Spinner animation="grow" variant="danger" />
-                                    <Spinner animation="grow" variant="warning" />
-                                    <Spinner animation="grow" variant="info" />
-                                    <Spinner animation="grow" variant="light" />
-                                    <Spinner animation="grow" variant="dark" />
-                              </Container>
 
-                        )
-                        : (
 
-                              <Container className = "d-flex flex-wrap align-items-lg-start align-content-center ">
-                                     {renderParks}
-                              </Container>
+                        <Container className = "d-flex flex-wrap align-items-lg-start align-content-center ">
+                                    {renderParks}
+                        </Container>
 
-                        )}
+
+
+                        {/* {renderParks} */}
                   </Row>
 
 

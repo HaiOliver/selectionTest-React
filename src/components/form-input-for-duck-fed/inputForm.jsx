@@ -3,6 +3,8 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import DateTimePicker from 'react-datetime-picker';
+import { useHistory } from "react-router-dom";
+import './inputForm.css';
 export default function FormInput() {
 
       const [time_fed, onChangeTime] = useState(new Date());
@@ -31,9 +33,7 @@ export default function FormInput() {
       }
 
       const handleNumberFoods = (value) => {
-            if(isNaN(value)){
-                  alert("please input a number !!")
-            }
+
             setNumberFoods(value)
       }
 
@@ -61,15 +61,15 @@ export default function FormInput() {
             return (year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds)
 
       }
-
+      const history = useHistory();
       // ! Handle Submit
       const handleSubmit = (e) => {
             e.preventDefault()
+            // ! Check validation empty blank
             if(location === "" || foods === "" || numberDucks === "" || numberFoods === ""  ){
                   alert("There is empty field. Please enter data !!")
                   return
             }
-
 
             const data = {
 
@@ -79,8 +79,8 @@ export default function FormInput() {
                   time_fed: formatDate(time_fed),
                   food:foods
                     };
-            console.log("🚀 ~ file: inputForm.jsx ~ line 48 ~ handleSubmit ~ data", data.time_fed)
 
+            // ? do post request here
             axios.post("/addNewPark",data)
                   .then((response) => {
                               console.log("🚀 ~ file: inputForm.jsx ~ line 57 ~ .then ~ response", response)
@@ -91,7 +91,10 @@ export default function FormInput() {
                               alert('Sorry, park cannot be added. Network error.');
                                     })
 
-            // ? do post request here
+
+            // ! redirect to Homepage
+            let path = `/`;
+            history.push(path);
       }
 
 
@@ -100,7 +103,7 @@ export default function FormInput() {
             <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicLocation">
                         <Form.Label className="text-left" style={{width: "100%"}}>
-                              <h3>
+                              <h3 className="where">
                                     Location Park
                               </h3>
 
@@ -118,7 +121,7 @@ export default function FormInput() {
 
                   <Form.Group controlId="formBasicTime">
                         <Form.Label className="text-left" style={{width: "100%"}}>
-                              <h3>
+                              <h3 className="time_fed">
                                     What time the duck are fed ?
                               </h3>
 
@@ -138,7 +141,7 @@ export default function FormInput() {
 
                   <Form.Group controlId="formBasicDucks">
                         <Form.Label className="text-left" style={{width: "100%"}}>
-                              <h3>
+                              <h3 className="numberDucksFed">
                                     How many ducks are fed ?
                               </h3>
 
@@ -153,7 +156,7 @@ export default function FormInput() {
 
                   <Form.Group controlId="formBasicFoods">
                         <Form.Label className="text-left" style={{width: "100%"}}>
-                              <h3>
+                              <h3 className="foodFedDuck">
                                     What food the duck are fed ?
                               </h3>
 
@@ -168,7 +171,7 @@ export default function FormInput() {
 
                   <Form.Group controlId="formBasicNumberFoods">
                         <Form.Label className="text-left" style={{width: "100%"}}>
-                              <h3>
+                              <h3 className="howManyfood">
                                        How many food the duck are fed ?
                               </h3>
 
@@ -183,7 +186,7 @@ export default function FormInput() {
                   </Form.Group>
 
                   <Button variant="success" type="submit">
-                        Submit
+                        Add new location
                   </Button>
 
             </Form>

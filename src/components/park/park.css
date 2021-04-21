@@ -1,0 +1,98 @@
+.location{
+      font-weight: 500;
+      font-size: 30px;
+      color:#138496;
+      text-transform: uppercase;
+
+}
+
+.food{
+      font-weight: 500;
+      font-size: 20px;
+      color:#138496;
+      width: 40px;
+      overflow: hidden;
+      overflow: hidden;
+       white-space:normal;
+}
+
+.numberFoods{
+      font-weight: 500;
+      font-size: 20px;
+      color:#138496;
+}
+
+.numberDucks{
+      font-weight: 500;
+      font-size: 20px;
+      color:#138496;
+
+}
+
+.date{
+      font-weight: 500;
+      font-size: 20px;
+      color:#138496;
+}
+
+
+.hour{
+      font-weight: 500;
+      font-size: 20px;
+      color:#138496;
+}
+
+.container-info{
+
+      text-align:left;
+      width:400px;
+      overflow-y:auto;
+
+      position:relative;
+      left:0;
+      height: 100px;
+
+}
+
+.title-location{
+      font-size: 18px;
+      width:400px;
+      overflow-y:auto;
+      text-align:center;
+      position:relative;
+      left:0;
+      height: 70px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+      .container-info{
+            text-align:left;
+            width:270px;
+            overflow-y:auto;
+            position:relative;
+            left:0;
+            height: 100px;
+
+      }
+
+      .title-location{
+            width:270px;
+            overflow-y:auto;
+            text-align:center;
+            position:relative;
+            left:0;
+            height: 70px;
+            font-size: 20px;
+      }
+
+      .location{
+      font-weight: 500;
+      font-size: 20px;
+      color:#138496;
+      text-transform: uppercase;
+
+}
+
+}

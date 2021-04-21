@@ -1,9 +1,10 @@
-import React,{Component,lazy, Suspense} from 'react';
+import React,{lazy, Suspense} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route} from 'react-router-dom';
 import ErrorBoundary from './components/error-boundary/error-boundary';
 import Loading from './components/loading/loading';
+
 // !! Lazy loading => improve loading speed
 const ListParks = lazy(()=>import('./pages/list-all-parks-fed-duck/list-parks'))
 const FedDuck = lazy(()=>import('./pages/info-fed-duck-in-park/fed-duck'))
