@@ -21,7 +21,7 @@ function App() {
                     <Loading/>
 
               }>
-                  <Route exact path="/selectionTest-React/" component={ListParks}/>
+                  <Route exact path="/selectionTest-React" component={ListParks}/>
                   <Route exact path="/selectionTest-React/infoDuckFed" component={FedDuck}/>
               </Suspense>
 
