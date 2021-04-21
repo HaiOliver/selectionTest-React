@@ -12,7 +12,7 @@ function Park(props) {
       const {location, numberDucks, time, numberFoods, food, id } = props
 
       const handleDelete = () => {
-            axios.delete(`https://react-selection-test.herokuapp.com/allParks/park/${id}`)
+            axios.delete(`https://react-selection-test.herokuapp.com/park/${id}`)
                   .then(res => {
                         let response = res.data;
                         return response
@@ -43,7 +43,7 @@ function Park(props) {
                                           Location: <span className="location">{location}</span>
                                           </h4>
                                     </Container>
-                                    
+
                                     </CardHeader>
                                     <CardBody>
 

@@ -80,7 +80,7 @@ export default function FormInput() {
                     };
 
             // ? do post request here
-            axios.post("https://react-selection-test.herokuapp.com/allParks/addNewPark",data)
+            axios.post("https://react-selection-test.herokuapp.com/addNewPark",data)
                   .then((response) => {
                               console.log("🚀 ~ file: inputForm.jsx ~ line 57 ~ .then ~ response", response)
                               alert("Park successfully added!");
