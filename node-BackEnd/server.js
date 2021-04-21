@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ParkFedDuck = require("./models/park-fed-duck");
-const sql = require("./db.js");
+
 const cors=require('cors');
 const app = express();
 // parse requests of content-type: application/json
@@ -27,8 +27,7 @@ app.get("/allParks", (req, res) => {
 
 // post request create new park
 app.post("/addNewPark",(req,res)=>{
-  console.log("===============================================================")
-  console.log("🚀 ~ file: server.js ~ line 30 ~ app.post ~ time fed", req.body.time_fed)
+  
 
 
   // Validate request
@@ -57,7 +56,6 @@ app.post("/addNewPark",(req,res)=>{
          });
        else res.send(data);
      });
-
 
 } )
 
@@ -115,7 +113,7 @@ app.delete("/park/:id",(req, res) => {
 
 
 
-// set port, listen for requests
-app.listen(8000, () => {
-  console.log("Server is running on port 8000.");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });

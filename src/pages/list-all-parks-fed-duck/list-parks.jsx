@@ -10,7 +10,6 @@ import './list-parks.css';
 function ListParks() {
       const [ parks, setParks] = useState([]);
       useEffect(() => {
-            console.log("useEffect render !!!!")
             const fetch_data_from_DB = async ()=>{
             let result = await axios.get('/allParks');
 
@@ -23,7 +22,6 @@ function ListParks() {
 
       // ! render park in browser
 
-      console.log(parks);
       const renderParks = parks.map((eachPark,indx) =>
                         <Col key = {indx} className="p-3">
                                           <Park
@@ -54,15 +52,10 @@ function ListParks() {
                   </Row>
                   <Row>
 
-
-
                         <Container className = "d-flex flex-wrap align-items-lg-start align-content-center ">
                                     {renderParks}
                         </Container>
-
-
-
-                        {/* {renderParks} */}
+                        
                   </Row>
 
 

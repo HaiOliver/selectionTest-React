@@ -12,15 +12,14 @@ const ParkFedDuck = function(parkFedDuck) {
 
 // create new Park
 ParkFedDuck.create = (newPark, result) => {
-  console.log("🚀 ~ file: park-fed-duck.js ~ line 15 ~ newPark", newPark)
+
 
   sql.query("INSERT INTO duckInfo SET ?", newPark, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(err, null);
       return;
     }
-    console.log("Line 23, created new Park in Db: ", { id: res.insertId, ...newPark});
+
     result(null, { id: res.insertId, ...newPark });
   });
 };
@@ -30,16 +29,13 @@ ParkFedDuck.create = (newPark, result) => {
 ParkFedDuck.getAll = result => {
   sql.query("SELECT * FROM duckInfo", (err, res) => {
     if (err) {
-      console.log("error: ", err);
+
       result(null, err);
       return;
     }
-
-    console.log("BurnabyRestaurants: ", res);
     result(null, res);
   });
 };
-
 
 // update Park by ID
 ParkFedDuck.updateById = (id, park, result) => {
@@ -50,8 +46,6 @@ ParkFedDuck.updateById = (id, park, result) => {
     park.food,park.time_fed, id],
     (err, res) => {
       if (err) {
-            console.log("🚀 ~ file: park-fed-duck.js ~ line 53 ~ err", err)
-
         result(null, err);
         return;
       }
@@ -60,7 +54,7 @@ ParkFedDuck.updateById = (id, park, result) => {
         result({ kind: "not_found" }, null);
         return;
       }
-      console.log("updated BurnabyRestaurant: ", { id: id, ...park });
+
       result(null, { id: id, ...park });
     }
   );
@@ -70,7 +64,7 @@ ParkFedDuck.updateById = (id, park, result) => {
 ParkFedDuck.remove = (id, result) => {
   sql.query("DELETE FROM duckInfo WHERE id = ?", id, (err, res) => {
     if (err) {
-      console.log("error: ", err);
+
       result(null, err);
       return;
     }
@@ -81,7 +75,7 @@ ParkFedDuck.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted park with id: ", id);
+
     result(null, res);
   });
 };

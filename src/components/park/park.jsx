@@ -2,7 +2,7 @@ import React from 'react'
 
 import axios from "axios";
 import {
-      Card, Button, CardHeader, CardFooter, CardBody, CardText, CardTitle, Container
+      Card, Button, CardHeader, CardFooter, CardBody, CardTitle, Container
 } from 'reactstrap';
 import "./park.css"
 

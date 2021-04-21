@@ -72,7 +72,6 @@ export default function FormInput() {
             }
 
             const data = {
-
                   location,
                   number_of_duck: numberDucks,
                   number_of_food : numberFoods,
@@ -88,7 +87,7 @@ export default function FormInput() {
                                     })
                   .catch((error) => {
                               console.log("🚀 ~ file: inputForm.jsx ~ line 61 ~ handleSubmit ~ error", error)
-                              alert('Sorry, park cannot be added. Network error.');
+                              alert('Sorry, Park cannot be added. Network error.');
                                     })
 
 
