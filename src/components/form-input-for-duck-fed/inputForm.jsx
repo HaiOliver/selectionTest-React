@@ -83,7 +83,7 @@ export default function FormInput() {
             axios.post("https://react-selection-test.herokuapp.com/addNewPark",data)
                   .then((response) => {
                               console.log("🚀 ~ file: inputForm.jsx ~ line 57 ~ .then ~ response", response)
-                              alert("Park successfully added!");
+                              alert("Park successfully added. Please refresh the page to see new update !");
                                     })
                   .catch((error) => {
                               console.log("🚀 ~ file: inputForm.jsx ~ line 61 ~ handleSubmit ~ error", error)
